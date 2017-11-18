@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Circle } from 'react-konva';
+import { Circle, Group, Text } from 'react-konva';
 
 function getDragBounds(pos) {
   let newX = pos.x;
@@ -24,19 +24,55 @@ function getDragBounds(pos) {
   };
 }
 
-const Player = (props) => {
-  return (
-    <Circle
-      x={props.courtX / 2}
-      y={props.courtY / 2}
-      radius={20}
-      fill={'black'}
-      shadowBlur={5}
-      draggable
-      dragBoundFunc={getDragBounds}
-    />
-  );
-};
+class Player extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: props.courtX / 2,
+      y: props.courtY / 2,
+      distance: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.calcDistance(this.props.courtX / 2, this.props.courtY / 2);
+  }
+
+  calcDistance = (x, y) => {
+    this.setState({
+      distance: Math.sqrt(((x / 15) ** 2) + ((y / 15) ** 2)),
+    });
+  }
+  handleDragMove = (evt) => {
+    this.setState({
+      x: evt.target.attrs.x,
+      y: evt.target.attrs.y,
+    });
+    const x = evt.target.attrs.x - (750 / 2);
+    const y = evt.target.attrs.y - (704 - 80);
+    this.calcDistance(x, y);
+  }
+  render() {
+    return (
+      <Group
+        x={this.state.x}
+        y={this.state.y}
+        onDragMove={this.handleDragMove}
+        draggable
+        dragBoundFunc={getDragBounds}
+      >
+        <Circle
+          radius={20}
+          fill={'red'}
+          shadowBlur={5}
+        />
+        <Text
+          text={this.state.distance.toString()}
+        />
+      </Group>
+    );
+  }
+}
 
 Player.propTypes = {
   courtX: PropTypes.number.isRequired,
