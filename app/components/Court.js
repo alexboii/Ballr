@@ -7,7 +7,7 @@ class Court extends Component {
     const image = new window.Image();
     image.src = src;
     return image;
-  }
+  };
 
   render() {
     return (
