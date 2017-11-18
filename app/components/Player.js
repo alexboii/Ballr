@@ -29,8 +29,7 @@ const Player = (props) => {
     <Circle
       x={props.courtX / 2}
       y={props.courtY / 2}
-      width={40}
-      height={40}
+      radius={20}
       fill={'black'}
       shadowBlur={5}
       draggable
