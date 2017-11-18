@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Court from '../components/Court';
+import Players from '../components/Players';
 
-const App = () => {
-  return (
-    <h2 id="heading">Hello ReactJS</h2>
-  );
-};
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <Court />
+        <Players />
+      </div>
+    );
+  }
+}
 
 export default App;
