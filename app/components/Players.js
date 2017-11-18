@@ -9,7 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TEAMS_CONST, TEAMS_ARRAY } from '../constants/TeamConstants';
 import { GET_PLAYERS_PER_TEAM } from '../constants/EndpointConstants';
 import '../assets/scss/players.scss';
-import PLAYER_FILLER from '../constants/ImageConstants';
+import { PLAYER_FILLER, TEAM_LOGO } from '../constants/ImageConstants';
 
 const getSuggestions = (value) => {
   const inputValue = value.trim().toLowerCase();
@@ -31,10 +31,7 @@ const renderSuggestion = (suggestion) => {
     <div>
       <img
         className={'team-logo'}
-        src={`http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/${getKeyByValue(
-          TEAMS_CONST,
-          suggestion,
-        )}.png`}
+        src={`${TEAM_LOGO}${getKeyByValue(TEAMS_CONST, suggestion)}.png`}
         alt={suggestion}
       />
       <span>{suggestion}</span>
@@ -58,6 +55,10 @@ class Players extends Component {
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 
     console.log(props.addSelectedPlayer);
+  }
+
+  componentDidMount() {
+    this.props.addSelectedPlayer('test');
   }
 
   onChangeSuggestion(event, { newValue }) {
@@ -111,22 +112,27 @@ class Players extends Component {
       onChange: this.onChangeSuggestion,
     };
 
-    const listElements = players.map(player => (
-      <ListItem
-        leftAvatar={
-          <ReactImageFallback
-            src={`https://nba-players.herokuapp.com/players/${player.last_name}/${player.first_name}`}
-            fallbackImage={PLAYER_FILLER}
-            initialImage={PLAYER_FILLER}
-            alt="cool image should be here"
-            className={'avatar'}
-          />
-        }
-        rightIcon={<ActionInfo />}
-        primaryText={player.full_name}
-        secondaryText="Jan 9, 2014"
-      />
-    ));
+    const listElements = players.map((player) => {
+      const imageUrl = `https://nba-players.herokuapp.com/players/${player.last_name}/${player.first_name}`;
+
+      return (
+        <ListItem
+          leftAvatar={
+            <ReactImageFallback
+              src={imageUrl}
+              fallbackImage={PLAYER_FILLER}
+              initialImage={PLAYER_FILLER}
+              alt="cool image should be here"
+              className={'avatar'}
+            />
+          }
+          rightIcon={<ActionInfo />}
+          primaryText={player.full_name}
+          secondaryText="Jan 9, 2014"
+          onClick={() => this.props.addSelectedPlayer(Object.assign(player, { image: imageUrl }))}
+        />
+      );
+    });
 
     return (
       <div className="body-suggestions">
