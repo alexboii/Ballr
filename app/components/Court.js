@@ -5,23 +5,37 @@ import Player from './Player';
 class Court extends Component {
   constructor() {
     super();
+    this.state = {
 
-    this.state = {};
+    };
+  }
+
+  createImage = (src) => {
+    const image = new window.Image();
+    image.src = src;
+    return image;
   }
 
   handleDragMove = (evt) => {
-    const dX = evt.target.attrs.x - 350;
-    const dY = evt.target.attrs.y - 60;
+    const x = evt.target.attrs.x - 350;
+    const y = evt.target.attrs.y - 60;
+    this.calcDistance(x, y);
+  }
 
-    console.log(Math.sqrt((dX ** 2) + (dY ** 2)));
+  calcDistance = (x, y) => {
+    return Math.sqrt((x ** 2) + (y ** 2));
   }
 
   render() {
     return (
-      <Stage width={700} height={700} onDragMove={this.handleDragMove}>
+      <Stage width={750} height={704} onDragMove={this.handleDragMove}>
         <Layer>
-          <Rect fill={'brown'} width={700} height={700} />
-          <Player />
+          <Rect
+            fillPatternImage={this.createImage('https://i.imgur.com/8XqqzWp.png')}
+            width={750}
+            height={704}
+          />
+          <Player courtX={750} courtY={704} />
         </Layer>
       </Stage>
     );
