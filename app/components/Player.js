@@ -18,7 +18,7 @@ function getDragBounds(pos) {
   return {
     x: newX,
     y: newY,
-  }
+  };
 }
 
 class Player extends Component {
