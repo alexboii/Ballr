@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Layer, Stage } from 'react-konva';
+import Player from './Player';
 
 class Court extends Component {
   constructor() {
@@ -9,9 +11,11 @@ class Court extends Component {
 
   render() {
     return (
-      <div>
-        <span>Court</span>
-      </div>
+      <Stage width={700} height={700}>
+        <Layer>
+          <Player />
+        </Layer>
+      </Stage>
     );
   }
 }
