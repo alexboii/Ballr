@@ -3,13 +3,6 @@ import { Rect, Layer, Stage } from 'react-konva';
 import Player from './Player';
 
 class Court extends Component {
-  constructor() {
-    super();
-    this.state = {
-      distance: 0,
-    };
-  }
-
   createImage = (src) => {
     const image = new window.Image();
     image.src = src;

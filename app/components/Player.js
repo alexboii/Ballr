@@ -39,9 +39,11 @@ class Player extends Component {
   }
 
   calcDistance = (x, y) => {
-    this.setState({
-      distance: Math.sqrt(((x / 15) ** 2) + ((y / 15) ** 2)),
-    });
+    const distance = Math.abs(
+      Math.sqrt(((x / 15) ** 2) + ((y / 15) ** 2)) -
+      Math.sqrt(2 * ((20 / 15) ** 2)),
+    );
+    this.setState({ distance });
   }
   handleDragMove = (evt) => {
     this.setState({
