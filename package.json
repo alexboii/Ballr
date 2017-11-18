@@ -31,6 +31,7 @@
   "dependencies": {
     "cross-env": "5.1.1",
     "konva": "^1.7.6",
+    "prop-types": "^15.6.0",
     "react": "16.1.1",
     "react-autosuggest": "^9.3.2",
     "react-dom": "16.1.1",
