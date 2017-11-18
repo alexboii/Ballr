@@ -57,10 +57,6 @@ class Players extends Component {
     console.log(props.addSelectedPlayer);
   }
 
-  componentDidMount() {
-    this.props.addSelectedPlayer('test');
-  }
-
   onChangeSuggestion(event, { newValue }) {
     this.setState({
       value: newValue,
@@ -117,6 +113,7 @@ class Players extends Component {
 
       return (
         <ListItem
+          key={player.player_id}
           leftAvatar={
             <ReactImageFallback
               src={imageUrl}
