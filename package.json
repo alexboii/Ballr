@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rimraf dist",
-    "production":
-      "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
+    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./app/**/**.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -18,10 +17,16 @@
   "author": "Kliment Petrov <kleopetroff@gmail.com>",
   "license": "MIT",
   "jest": {
-    "setupFiles": ["<rootDir>/shim.js"],
+    "setupFiles": [
+      "<rootDir>/shim.js"
+    ],
     "mapCoverage": true,
-    "collectCoverageFrom": ["app/**/*.{js,jsx,ts,tsx}"],
-    "testMatch": ["**/?(*.)(spec|test).js?(x)"]
+    "collectCoverageFrom": [
+      "app/**/*.{js,jsx,ts,tsx}"
+    ],
+    "testMatch": [
+      "**/?(*.)(spec|test).js?(x)"
+    ]
   },
   "dependencies": {
     "cross-env": "5.1.1",
