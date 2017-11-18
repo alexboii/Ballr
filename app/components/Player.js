@@ -18,15 +18,15 @@ class Player extends Component {
   getDragBounds = (pos) => {
     let newX = pos.x;
     let newY = pos.y;
-    const maxX = 750 - 20;
-    const maxY = 704 - 20;
-    if (pos.x < 20) {
-      newX = 20;
+    const maxX = this.props.courtX - this.props.radius;
+    const maxY = this.props.courtY - this.props.radius;
+    if (pos.x < this.props.radius) {
+      newX = this.props.radius;
     } else if (pos.x > maxX) {
       newX = maxX;
     }
-    if (pos.y < 20) {
-      newY = 20;
+    if (pos.y < this.props.radius) {
+      newY = this.props.radius;
     } else if (pos.y > maxY) {
       newY = maxY;
     }
@@ -38,7 +38,7 @@ class Player extends Component {
   calcDistance = (x, y) => {
     const distance = Math.abs(
       Math.sqrt(((x / 14.50) ** 2) + ((y / 15) ** 2)) -
-      Math.sqrt(2 * ((20 / 15) ** 2)),
+      Math.sqrt(2 * ((this.props.radius / 15) ** 2)),
     );
     this.setState({ distance });
   }
@@ -61,8 +61,13 @@ class Player extends Component {
         dragBoundFunc={this.getDragBounds}
       >
         <Circle
-          radius={20}
-          fill={`hsl(${120 - (this.state.distance * 4)}, 100%, 50%)`}
+          radius={this.props.radius}
+          fill={`hsl(${Math.max(120 - (this.state.distance * 4), 0)}, 100%, 50%)`}
+          shadowBlur={5}
+        />
+        <Circle
+          radius={(this.props.radius * 2) / 3}
+          fill={'white'}
           shadowBlur={5}
         />
         <Text
@@ -76,6 +81,7 @@ class Player extends Component {
 Player.propTypes = {
   courtX: PropTypes.number.isRequired,
   courtY: PropTypes.number.isRequired,
+  radius: PropTypes.number.isRequired,
 };
 
 export default Player;

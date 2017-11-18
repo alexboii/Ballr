@@ -18,7 +18,7 @@ class Court extends Component {
   };
 
   render() {
-    const players = this.state.players.map(() => <Player courtX={750} courtY={704} />);
+    const players = this.state.players.map(() => <Player courtX={750} courtY={704} radius={22} />);
     return (
       <Stage width={750} height={704}>
         <Layer>

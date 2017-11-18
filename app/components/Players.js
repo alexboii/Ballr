@@ -79,7 +79,7 @@ class Players extends Component {
           this.setState({ loading: false });
           this.setState({ players: response });
         })
-        .catch((error) => {
+        .catch(() => {
           this.setState({ loading: false });
         });
     } else {
