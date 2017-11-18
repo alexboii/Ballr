@@ -62,7 +62,7 @@ class Player extends Component {
       >
         <Circle
           radius={20}
-          fill={'red'}
+          fill={`hsl(${120 - (this.state.distance * 4)}, 100%, 50%)`}
           shadowBlur={5}
         />
         <Text
