@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rimraf dist",
-    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
+    "production":
+      "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./app/**/**.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -17,28 +18,26 @@
   "author": "Kliment Petrov <kleopetroff@gmail.com>",
   "license": "MIT",
   "jest": {
-    "setupFiles": [
-      "<rootDir>/shim.js"
-    ],
+    "setupFiles": ["<rootDir>/shim.js"],
     "mapCoverage": true,
-    "collectCoverageFrom": [
-      "app/**/*.{js,jsx,ts,tsx}"
-    ],
-    "testMatch": [
-      "**/?(*.)(spec|test).js?(x)"
-    ]
+    "collectCoverageFrom": ["app/**/*.{js,jsx,ts,tsx}"],
+    "testMatch": ["**/?(*.)(spec|test).js?(x)"]
   },
   "dependencies": {
     "cross-env": "5.1.1",
+    "file-loader": "^1.1.4",
     "konva": "^1.7.6",
+    "lodash": "^4.17.4",
+    "material-ui": "^0.19.4",
     "prop-types": "^15.6.0",
     "react": "16.1.1",
     "react-autosuggest": "^9.3.2",
     "react-dom": "16.1.1",
     "react-hot-loader": "3.1.2",
+    "react-image-fallback": "^7.0.1",
     "react-konva": "^1.6.2",
     "react-router-dom": "4.2.0",
-    "react-toolbox": "^2.0.0-beta.12"
+    "react-toolbox-core": "0.0.0-alpha.17"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
