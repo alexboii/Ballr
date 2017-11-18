@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import { Rect, Layer, Stage } from 'react-konva';
+import PropTypes from 'prop-types';
 import Player from './Player';
 
 class Court extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      players: [1, 2, 3, 4, 5],
-    };
-  }
 
   createImage = (src) => {
     const image = new window.Image();
@@ -18,7 +12,9 @@ class Court extends Component {
   };
 
   render() {
-    const players = this.state.players.map(() => <Player courtX={750} courtY={704} radius={22} />);
+    const players = this.props.selectedPlayers.map(
+      data => <Player key={data.player_id} courtX={750} courtY={704} radius={22} data={data} />,
+    );
     return (
       <Stage width={750} height={704}>
         <Layer>
@@ -33,5 +29,9 @@ class Court extends Component {
     );
   }
 }
+
+Court.propTypes = {
+  selectedPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Court;
