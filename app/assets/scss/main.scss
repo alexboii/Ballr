@@ -1,9 +1,12 @@
 $color: #262828;
 
-body {
+.body {
+  display: flex;
+  flex-grow: 1;
+  flex-flow: row nowrap;
+  justify-content: space-around;
   margin: 0;
   padding: 0;
-  width: 100%; /* full window width */
   text-align: center;
   color: $color;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { List, ListItem } from 'material-ui/List';
+import PropTypes from 'prop-types';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 import ReactImageFallback from 'react-image-fallback';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -42,8 +43,8 @@ const renderSuggestion = (suggestion) => {
 };
 
 class Players extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       value: '',
@@ -55,6 +56,8 @@ class Players extends Component {
     this.onChangeSuggestion = this.onChangeSuggestion.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+
+    console.log(props.addSelectedPlayer);
   }
 
   onChangeSuggestion(event, { newValue }) {
@@ -79,7 +82,7 @@ class Players extends Component {
           this.setState({ loading: false });
           this.setState({ players: response });
         })
-        .catch((error) => {
+        .catch(() => {
           this.setState({ loading: false });
         });
     } else {
@@ -157,5 +160,9 @@ class Players extends Component {
     );
   }
 }
+
+Players.propTypes = {
+  addSelectedPlayer: PropTypes.func.isRequired,
+};
 
 export default Players;
