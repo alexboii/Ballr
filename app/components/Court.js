@@ -12,10 +12,11 @@ class Court extends Component {
   };
 
   render() {
-    const players = this.props.selectedPlayers.map(
-      data => <Player key={data.player_id} courtX={750} courtY={704} radius={22} data={data} />,
-    );
-    const teamName = (this.props.selectedPlayers.length > 0 && this.props.selectedPlayers[0].team) || 'gsw';
+    const players = this.props.selectedPlayers.map(data => (
+      <Player key={data.player_id} courtX={750} courtY={704} radius={22} data={data} />
+    ));
+    const teamName =
+      (this.props.selectedPlayers.length > 0 && this.props.selectedPlayers[0].team) || '';
     return (
       <Stage width={750} height={704}>
         <Layer>
@@ -25,7 +26,11 @@ class Court extends Component {
             height={704}
           />
           <Rect
-            fillPatternImage={this.createImage(`${TEAM_LOGO}${teamName}.png`)}
+            fillPatternImage={
+              teamName
+                ? this.createImage(`${TEAM_LOGO}${teamName}.png`)
+                : this.createImage('https://www.transparenttextures.com/patterns/asfalt-light.png')
+            }
             width={500}
             height={500}
             rotate={Math.PI / 2}
