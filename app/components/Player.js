@@ -57,7 +57,7 @@ class Player extends Component {
         return response.json();
       })
       .then((r) => {
-        this.setState({ percentage: r.percentage_success });
+        this.setState({ percentage: r.percent_difference_average });
       })
       .catch(() => {
       });

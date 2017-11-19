@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 import { ListItem } from 'material-ui/List';
 import PropTypes from 'prop-types';
 import ReactImageFallback from 'react-image-fallback';
@@ -30,7 +30,7 @@ class PlayerListItem extends Component {
   }
 
   render() {
-    const { playerFiller, addSelectedPlayer, selectedPlayers } = this.props;
+    const { playerFiller, addSelectedPlayer } = this.props;
     const { player } = this.state;
     const imageUrl = `https://raw.githubusercontent.com/mroeschke/NBA-Player-Headshots/master/2015-2016/Player%20Photos/${player.full_name}.png`;
 
