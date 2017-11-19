@@ -80,8 +80,12 @@ class Players extends Component {
         })
         .then((response) => {
           this.setState({ loading: false });
+          const newList = _.reverse(
+            _.sortBy(_.uniqBy(response, 'full_name'), x => x.points_per_game),
+          );
+
           this.setState({
-            players: _.uniqBy(response, 'full_name'),
+            players: newList,
           });
         })
         .catch(() => {
