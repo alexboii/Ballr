@@ -1,24 +1,6 @@
-# ES6 React boilerplate using Webpack
+# Ballr
 
 [![Travis](https://img.shields.io/travis/KleoPetroff/react-webpack-boilerplate/master.svg?style=flat-square)](https://github.com/KleoPetroff/react-webpack-boilerplate) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-Simple and optimized React boilerplate. It includes: 
-
-- [x] React 16.1.1
-- [x] ECMAScript 6 and JSX support
-- [x] React Router v4
-- [x] Component testing using [Enzyme](https://github.com/airbnb/enzyme) and [Jest](https://facebook.github.io/jest)
-- [x] Code Coverage
-- [x] Latest Webpack (v.3.8.1) and Webpack Dev Server (v.2.9.4) with Scope Hoisting enabled
-- [x] Hot Module Replacement using [react-hot-loader](https://github.com/gaearon/react-hot-loader)
-- [x] ES6 linting with continuous linting on file change
-- [x] SASS support
-- [x] Separate CSS stylesheets generation
-- [x] Automatic HTML generation
-- [x] Production Config
-- [x] Custom Babel Preset with Decorators, Class Properties, Rest/Spread operator support
-- [x] Export Separate Vendor Files
-- [ ] Redux
 
 ## Starting the dev server
 
@@ -38,6 +20,9 @@ Make sure you have the latest Stable or LTS version of Node.js installed.
 - `npm test` - run all tests
 - `npm run test:watch` - run all tests in watch mode
 - `npm run coverage` - generate code coverage report in the `coverage` folder
+
+_________
+
 # Code Jam - DataDive - Ballr
 
 ![Boston Celtics Huddle of Players](https://github.com/AndreiUngur/Codejam2017/blob/master/hi-res-183712255-head-coach-brad-stevens-of-the-boston-celtics-meets_crop_650.jpg "Boston Celtics Huddle of Players")
