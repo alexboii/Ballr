@@ -91,7 +91,7 @@ class Player extends Component {
           shadowBlur={5}
         />
         <Text
-          text={`${(this.state.percentage * 100).toFixed(2)}%`}
+          text={`${this.props.data.number} \n ${(this.state.percentage * 100).toFixed(2)}%`}
         />
       </Group>
     );
