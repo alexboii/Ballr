@@ -96,7 +96,19 @@ class Player extends Component {
           shadowBlur={5}
         />
         <Text
-          text={`${this.props.data.number} \n ${(this.state.percentage * 100).toFixed(2)}%`}
+          fontStyle={'bold'}
+          fontSize={20}
+          align={'center'}
+          offsetX={12}
+          offsetY={8}
+          text={`${this.props.data.number}`}
+        />
+        <Text
+          font-style={'bold'}
+          align={'center'}
+          offsetX={25}
+          offsetY={-28}
+          text={`${(this.state.percentage * 100).toFixed(2)}%`}
         />
       </Group>
     );
