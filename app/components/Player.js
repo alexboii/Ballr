@@ -59,7 +59,14 @@ class Player extends Component {
       })
       .then((r) => {
         if (x === this.props.courtX / 2 && y === this.props.courtY / 2) {
-          this.setState({ x: r.coordinates[0], y: r.coordinates[1] });
+          console.log((r.coordinates[0] * 14.5) + (this.props.courtX / 2));
+          console.log(((this.props.courtY + 80) - (r.coordinates[1] * 15)));
+          this.setState(
+            {
+              x: (r.coordinates[0] * 14.5) + (this.props.courtX / 2),
+              y: ((this.props.courtY - 80) - (r.coordinates[1] * 15)),
+            },
+          );
         }
         this.setState({ percentage: r.percent_difference_average });
         return new Promise();
@@ -73,7 +80,7 @@ class Player extends Component {
       y: evt.target.attrs.y,
     });
     const x = evt.target.attrs.x - (this.props.courtX / 2);
-    const y = evt.target.attrs.y - (this.props.courtY - 80);
+    const y = (this.props.courtY - 80) - evt.target.attrs.y;
     this.calcDistance(x, y);
   }
   render() {
@@ -87,7 +94,7 @@ class Player extends Component {
       >
         <Circle
           radius={this.props.radius}
-          fill={`hsl(${Math.max(120 - (this.state.percentage * 400), 0)}, 100%, 50%)`}
+          fill={`hsl(${Math.max(120 + ((1 - this.state.percentage) * 300), 0)}, 100%, 50%)`}
           shadowBlur={5}
         />
         <Circle
