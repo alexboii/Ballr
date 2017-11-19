@@ -14,10 +14,6 @@ class PlayerListItem extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log(this.props.addSelectedPlayer);
-  }
-
   render() {
     const { playerFiller, addSelectedPlayer } = this.props;
     const { player } = this.state;

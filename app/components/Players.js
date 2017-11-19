@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
-import { List, ListItem } from 'material-ui/List';
+import { List } from 'material-ui/List';
 import PropTypes from 'prop-types';
-import ActionInfo from 'material-ui/svg-icons/action/info';
-import ReactImageFallback from 'react-image-fallback';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TEAMS_CONST, TEAMS_ARRAY } from '../constants/TeamConstants';

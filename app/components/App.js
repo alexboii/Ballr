@@ -13,9 +13,7 @@ class App extends Component {
   }
 
   addPlayer(player) {
-    console.log('Am I here?');
     this.setState({ selectedPlayers: [...this.state.selectedPlayers, player] });
-    console.log(this.state.selectedPlayers);
   }
 
   clearPlayersList() {

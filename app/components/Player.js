@@ -10,7 +10,6 @@ class Player extends Component {
       y: props.courtY / 2,
       distance: 0,
     };
-    console.log(props.data);
   }
 
   componentDidMount() {
@@ -88,7 +87,6 @@ Player.propTypes = {
   courtX: PropTypes.number.isRequired,
   courtY: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
-  data: PropTypes.object.isRequired,  // eslint-disable-line react/forbid-prop-types
 };
 
 export default Player;
