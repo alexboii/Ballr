@@ -8,6 +8,7 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TEAMS_CONST, TEAMS_ARRAY } from '../constants/TeamConstants';
 import { GET_PLAYERS_PER_TEAM } from '../constants/EndpointConstants';
+import PlayerListItem from '../components/PlayerListItem';
 import '../assets/scss/players.scss';
 import { PLAYER_FILLER, TEAM_LOGO } from '../constants/ImageConstants';
 
@@ -54,17 +55,15 @@ class Players extends Component {
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 
-    console.log(props.addSelectedPlayer);
-  }
-
-  componentDidMount() {
-    this.props.addSelectedPlayer('test');
+    this.addPlayerCopy = this.addPlayerCopy.bind(this);
   }
 
   onChangeSuggestion(event, { newValue }) {
     this.setState({
       value: newValue,
     });
+
+    this.props.clearPlayersList();
 
     if (TEAMS_ARRAY.find(team => team === newValue)) {
       // TODO: REST CALLS FOR ARRAY OF PLAYERS
@@ -103,6 +102,10 @@ class Players extends Component {
     });
   }
 
+  addPlayerCopy(e) {
+    this.props.addSelectedPlayer(e);
+  }
+
   render() {
     const { value, suggestions, players, loading } = this.state;
 
@@ -113,23 +116,11 @@ class Players extends Component {
     };
 
     const listElements = players.map((player) => {
-      const imageUrl = `https://nba-players.herokuapp.com/players/${player.last_name}/${player.first_name}`;
-
       return (
-        <ListItem
-          leftAvatar={
-            <ReactImageFallback
-              src={imageUrl}
-              fallbackImage={PLAYER_FILLER}
-              initialImage={PLAYER_FILLER}
-              alt="cool image should be here"
-              className={'avatar'}
-            />
-          }
-          rightIcon={<ActionInfo />}
-          primaryText={player.full_name}
-          secondaryText="Jan 9, 2014"
-          onClick={() => this.props.addSelectedPlayer(Object.assign(player, { image: imageUrl }))}
+        <PlayerListItem
+          playerProfile={JSON.stringify(player)}
+          addSelectedPlayer={this.addPlayerCopy}
+          playerFiller={PLAYER_FILLER}
         />
       );
     });
@@ -169,6 +160,7 @@ class Players extends Component {
 
 Players.propTypes = {
   addSelectedPlayer: PropTypes.func.isRequired,
+  clearPlayersList: PropTypes.func.isRequired,
 };
 
 export default Players;

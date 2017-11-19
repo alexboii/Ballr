@@ -9,12 +9,18 @@ class App extends Component {
 
     this.state = { selectedPlayers: [] };
     this.addPlayer = this.addPlayer.bind(this);
+    this.clearPlayersList = this.clearPlayersList.bind(this);
   }
 
   addPlayer(player) {
+    console.log('Am I here?');
     this.setState({ selectedPlayers: [...this.state.selectedPlayers, player] });
 
     console.log(this.state.selectedPlayers);
+  }
+
+  clearPlayersList() {
+    this.setState({ selectedPlayers: [] });
   }
 
   render() {
@@ -23,7 +29,7 @@ class App extends Component {
     return (
       <div className={'body'}>
         <Court selectedPlayers={this.state.selectedPlayers} />
-        <Players addSelectedPlayer={this.addPlayer} />
+        <Players addSelectedPlayer={this.addPlayer} clearPlayersList={this.clearPlayersList} />
         <ul>{listElements}</ul>
       </div>
     );
