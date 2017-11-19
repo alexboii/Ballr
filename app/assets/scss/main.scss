@@ -30,9 +30,9 @@ $color: #262828;
   right: 0;
 
   animation-name: anime;
-  animation-iteration-count: 1;
-  animation-timing-function: cubic-bezier(cubic-bezier(0.075, 0.82, 0.165, 1));
-  animation-duration: 1s;
+  animation-iteration-count: 0.8;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-duration: 0.8s;
 }
 
 .lower-image {
@@ -40,13 +40,14 @@ $color: #262828;
   height: 73px;
 }
 
-.lower-image:after {
+.player-box:after {
+  background-color: red;
   width: 100px;
   height: 73px;
   opacity: 0;
 }
 
-.lower-image:hover:after {
+.player-box:hover:after {
   content: "REM";
   opacity: 0.6;
   transition: all 0.5s ease-in;
