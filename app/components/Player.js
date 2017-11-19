@@ -12,7 +12,8 @@ class Player extends Component {
       percentage: 0,
     };
   }
-  componentDidMount() {
+
+  componentWillMount() {
     this.calcDistance(this.props.courtX / 2, this.props.courtY / 2);
   }
   getDragBounds = (pos) => {
@@ -57,7 +58,11 @@ class Player extends Component {
         return response.json();
       })
       .then((r) => {
+        if (x === this.props.courtX / 2 && y === this.props.courtY / 2) {
+          this.setState({ x: r.coordinates[0], y: r.coordinates[1] });
+        }
         this.setState({ percentage: r.percent_difference_average });
+        return new Promise();
       })
       .catch(() => {
       });
