@@ -34,7 +34,7 @@ const renderSuggestion = (suggestion) => {
         src={`${TEAM_LOGO}${getKeyByValue(TEAMS_CONST, suggestion)}.png`}
         alt={suggestion}
       />
-      <span>{suggestion}</span>
+      <span>{suggestion.charAt(0).toUpperCase() + suggestion.slice(1)}</span>
     </div>
   );
 };
@@ -154,7 +154,7 @@ class Players extends Component {
           <MuiThemeProvider>
             <RefreshIndicator
               size={40}
-              left={120}
+              left={1220}
               top={100}
               status="loading"
               className={'refresh'}
