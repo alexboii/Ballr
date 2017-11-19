@@ -56,6 +56,7 @@ class Players extends Component {
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 
     this.addPlayerCopy = this.addPlayerCopy.bind(this);
+    this.removePlayerCopy = this.removePlayerCopy.bind(this);
   }
 
   onChangeSuggestion(event, { newValue }) {
@@ -112,6 +113,10 @@ class Players extends Component {
     this.props.addSelectedPlayer(e);
   }
 
+  removePlayerCopy(e) {
+    this.props.removeSelectedPlayer(e);
+  }
+
   render() {
     const { value, suggestions, players, loading } = this.state;
 
@@ -127,6 +132,7 @@ class Players extends Component {
           key={player.player_id}
           playerProfile={JSON.stringify(player)}
           addSelectedPlayer={this.addPlayerCopy}
+          removeSelectedPlayer={this.removePlayerCopy}
           playerFiller={PLAYER_FILLER}
           selectedPlayers={this.props.selectedPlayers}
         />
@@ -170,6 +176,7 @@ Players.propTypes = {
   addSelectedPlayer: PropTypes.func.isRequired,
   clearPlayersList: PropTypes.func.isRequired,
   selectedPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeSelectedPlayer: PropTypes.func.isRequired,
 };
 
 export default Players;
