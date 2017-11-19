@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as _ from 'lodash';
 import { ListItem } from 'material-ui/List';
 import PropTypes from 'prop-types';
 import ReactImageFallback from 'react-image-fallback';
@@ -11,16 +12,24 @@ class PlayerListItem extends Component {
 
     this.state = {
       player: JSON.parse(this.props.playerProfile),
+      toggled: false,
     };
+
+    console.log(this.props.selectedPlayers);
   }
 
   render() {
-    const { playerFiller, addSelectedPlayer } = this.props;
+    const { playerFiller, addSelectedPlayer, selectedPlayers } = this.props;
     const { player } = this.state;
     const imageUrl = `https://raw.githubusercontent.com/mroeschke/NBA-Player-Headshots/master/2015-2016/Player%20Photos/${player.full_name}.png`;
 
     return (
       <ListItem
+        style={{
+          backgroundColor: this.props.selectedPlayers.some(x => x.full_name === player.full_name)
+            ? 'yellow'
+            : '',
+        }}
         leftAvatar={
           <ReactImageFallback
             src={imageUrl}
@@ -33,7 +42,11 @@ class PlayerListItem extends Component {
         rightIcon={<ActionInfo />}
         primaryText={player.full_name}
         secondaryText="Jan 9, 2014"
-        onClick={() => addSelectedPlayer(Object.assign(player, { image: imageUrl }))}
+        onClick={() => {
+          if (addSelectedPlayer(Object.assign(player, { image: imageUrl })) !== 0) {
+            this.setState({ toggled: true });
+          }
+        }}
       />
     );
   }
@@ -43,6 +56,7 @@ PlayerListItem.propTypes = {
   playerProfile: PropTypes.string.isRequired,
   addSelectedPlayer: PropTypes.func.isRequired,
   playerFiller: PropTypes.string.isRequired,
+  selectedPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default PlayerListItem;
