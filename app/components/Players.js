@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
+import Paper from 'material-ui/Paper';
 import { List } from 'material-ui/List';
 import PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -164,7 +165,9 @@ class Players extends Component {
 
         {players.length > 0 && (
           <MuiThemeProvider>
-            <List>{listElements}</List>
+            <div className="players-box">
+              <List>{listElements}</List>
+            </div>
           </MuiThemeProvider>
         )}
       </div>

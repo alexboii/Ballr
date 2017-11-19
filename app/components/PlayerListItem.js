@@ -39,8 +39,9 @@ class PlayerListItem extends Component {
         <ListItem
           style={{
             backgroundColor: this.props.selectedPlayers.some(x => x.full_name === player.full_name)
-              ? 'yellow'
+              ? '#83EEA7'
               : '',
+            marginRight: 2,
           }}
           leftAvatar={
             <ReactImageFallback
