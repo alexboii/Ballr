@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .body-suggestions {
@@ -112,6 +112,25 @@ body {
 .modal-div {
   width: 800px;
   height: 500px;
+}
+
+.modal-div2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.buff1 {
+  margin-top: 60px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  text-align: center;
+}
+
+.buff2 {
+  text-align: center;
 }
 
 .modal-header {

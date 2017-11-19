@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 import ReactImageFallback from 'react-image-fallback';
+import ReactModal from 'react-modal';
 import Court from '../components/Court';
 import Players from '../components/Players';
 import '../assets/scss/main.scss';
 import { PLAYER_FILLER } from '../constants/ImageConstants';
+import '../assets/scss/players.scss';
 
 class App extends Component {
   constructor() {
     super();
 
-    this.state = { selectedPlayers: [] };
+    this.state = {
+      selectedPlayers: [],
+      showModal: true,
+    };
     this.addPlayer = this.addPlayer.bind(this);
     this.removePlayer = this.removePlayer.bind(this);
     this.clearPlayersList = this.clearPlayersList.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
 
   addPlayer(player) {
@@ -77,6 +92,34 @@ class App extends Component {
           selectedPlayers={this.state.selectedPlayers}
           clearPlayersList={this.clearPlayersList}
         />
+        <ReactModal
+          isOpen={this.state.showModal}
+          className="modal"
+          contentLabel="Minimal Modal Example"
+          onRequestClose={this.handleCloseModal}
+          shouldCloseOnOverlayClick
+        >
+          <div className={'modal-div'}>
+            <div className={'modal-div2'}>
+              <div className="buff2">
+                <img
+                  style={{ marginTop: 40, width: 500 }}
+                  alt="img"
+                  src="https://i.imgur.com/0DuIpG4.png"
+                />
+              </div>
+              <div className="buff1">
+                Improve your play making! Through advanced data analytics and a comfortable user
+                interface, Ballr allows you to prepare the plays that optimize the capabilities of
+                your team. Simply select your preferred team. Clicking on players will automatically
+                place them in their best positions, but if you choose to drag them around it will
+                indicate how comfortable they might be in different positions. A greener color means
+                the player is best in the current position, while red indicates that you should
+                think twice about the layout.
+              </div>
+            </div>
+          </div>
+        </ReactModal>
       </div>
     );
   }
