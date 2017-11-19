@@ -10,6 +10,7 @@ class Player extends Component {
       y: props.courtY / 2,
       distance: 0,
     };
+    console.log(props.data);
   }
 
   componentDidMount() {
@@ -35,6 +36,11 @@ class Player extends Component {
       y: newY,
     };
   }
+  createImage = (src) => {
+    const image = new window.Image();
+    image.src = src;
+    return image;
+  };
   calcDistance = (x, y) => {
     const distance = Math.abs(
       Math.sqrt(((x / 14.50) ** 2) + ((y / 15) ** 2)) -
@@ -82,6 +88,7 @@ Player.propTypes = {
   courtX: PropTypes.number.isRequired,
   courtY: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
+  data: PropTypes.object.isRequired,  // eslint-disable-line react/forbid-prop-types
 };
 
 export default Player;

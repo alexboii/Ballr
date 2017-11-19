@@ -15,7 +15,6 @@ class App extends Component {
   addPlayer(player) {
     console.log('Am I here?');
     this.setState({ selectedPlayers: [...this.state.selectedPlayers, player] });
-
     console.log(this.state.selectedPlayers);
   }
 
@@ -24,8 +23,9 @@ class App extends Component {
   }
 
   render() {
-    const listElements = this.state.selectedPlayers.map(player => <li>{player.full_name}</li>);
-
+    const listElements = this.state.selectedPlayers.map(
+      player => <li key={player.player_id}>{player.full_name}</li>,
+    );
     return (
       <div className={'body'}>
         <Court selectedPlayers={this.state.selectedPlayers} />
