@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Circle, Group, Text } from 'react-konva';
+import { GET_ZONES_PER_PLAYER } from '../constants/EndpointConstants';
 
 class Player extends Component {
   constructor(props) {
@@ -8,10 +9,9 @@ class Player extends Component {
     this.state = {
       x: props.courtX / 2,
       y: props.courtY / 2,
-      distance: 0,
+      percentage: 0,
     };
   }
-
   componentDidMount() {
     this.calcDistance(this.props.courtX / 2, this.props.courtY / 2);
   }
@@ -41,11 +41,26 @@ class Player extends Component {
     return image;
   };
   calcDistance = (x, y) => {
-    const distance = Math.abs(
-      Math.sqrt(((x / 14.50) ** 2) + ((y / 15) ** 2)) -
-      Math.sqrt(2 * ((this.props.radius / 15) ** 2)),
-    );
-    this.setState({ distance });
+    const formData = new FormData();
+    const payload = { "x": (x / 14.5), "y": (y / 15)}; // eslint-disable-line
+    for (const key in payload) { // eslint-disable-line
+      formData.append(key, payload[key]); // eslint-disable-line
+    }
+    fetch(GET_ZONES_PER_PLAYER(
+      this.props.data.player_id),
+      {
+        method: 'POST',
+        body: formData,
+      },
+      )
+      .then((response) => {
+        return response.json();
+      })
+      .then((r) => {
+        this.setState({ percentage: r.percentage_success });
+      })
+      .catch(() => {
+      });
   }
   handleDragMove = (evt) => {
     this.setState({
@@ -67,7 +82,7 @@ class Player extends Component {
       >
         <Circle
           radius={this.props.radius}
-          fill={`hsl(${Math.max(120 - (this.state.distance * 4), 0)}, 100%, 50%)`}
+          fill={`hsl(${Math.max(120 - (this.state.percentage * 400), 0)}, 100%, 50%)`}
           shadowBlur={5}
         />
         <Circle
@@ -76,7 +91,7 @@ class Player extends Component {
           shadowBlur={5}
         />
         <Text
-          text={this.state.distance.toFixed(2)}
+          text={`${(this.state.percentage * 100).toFixed(2)}%`}
         />
       </Group>
     );
@@ -87,6 +102,7 @@ Player.propTypes = {
   courtX: PropTypes.number.isRequired,
   courtY: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
+  data: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default Player;
