@@ -99,24 +99,22 @@ class App extends Component {
           onRequestClose={this.handleCloseModal}
           shouldCloseOnOverlayClick
         >
-          <div className={'modal-div'}>
-            <div className={'modal-div2'}>
-              <div className="buff2">
-                <img
-                  style={{ marginTop: 40, width: 500 }}
-                  alt="img"
-                  src="https://i.imgur.com/0DuIpG4.png"
-                />
-              </div>
-              <div className="buff1">
-                Improve your play making! Through advanced data analytics and a comfortable user
-                interface, Ballr allows you to prepare the plays that optimize the capabilities of
-                your team. Simply select your preferred team. Clicking on players will automatically
-                place them in their best positions, but if you choose to drag them around it will
-                indicate how comfortable they might be in different positions. A greener color means
-                the player is best in the current position, while red indicates that you should
-                think twice about the layout.
-              </div>
+          <div className={'modal-div2'}>
+            <div className="buff2">
+              <img
+                style={{ marginTop: 10, width: 500 }}
+                alt="img"
+                src="https://i.imgur.com/0DuIpG4.png"
+              />
+            </div>
+            <div className="buff1">
+              Improve your play making! Through advanced data analytics and a comfortable user
+              interface, Ballr allows you to prepare the plays that optimize the capabilities of
+              your team. Simply select your preferred team. Clicking on players will automatically
+              place them in their best positions, but if you choose to drag them around it will
+              indicate how comfortable they might be in different positions. A greener color means
+              the player is best in the current position, while red indicates that you should think
+              twice about the layout.
             </div>
           </div>
         </ReactModal>

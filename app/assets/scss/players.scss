@@ -119,6 +119,8 @@ body {
 }
 
 .modal-div2 {
+  width: 1000px;
+  height: 600px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -129,7 +131,7 @@ body {
   margin-top: 60px;
   margin-right: 20px;
   margin-left: 20px;
-
+  font-size: 23px;
   text-align: center;
 }
 
