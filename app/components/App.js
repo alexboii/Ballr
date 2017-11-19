@@ -20,11 +20,21 @@ class App extends Component {
       this.state.selectedPlayers.length < 5
     ) {
       this.setState({ selectedPlayers: [...this.state.selectedPlayers, player] });
+    } else {
+      return 'err';
     }
+
+    return 'good';
   }
 
   clearPlayersList() {
     this.setState({ selectedPlayers: [] });
+  }
+
+  removePlayer(player) {
+    this.setState({
+      selectedPlayers: this.state.selectedPlayers.filter(x => x.player_id !== player.player_id),
+    });
   }
 
   render() {
@@ -41,6 +51,7 @@ class App extends Component {
             initialImage={PLAYER_FILLER}
             alt="cool image should be here"
             className={'lower-image'}
+            onClick={() => this.removePlayer(player)}
           />
           <div className={'player-text-info'}>
             <div className={'player-text-name'}>
@@ -59,7 +70,11 @@ class App extends Component {
           <Court selectedPlayers={this.state.selectedPlayers} />
           <div className={'players-detailed'}>{listElements}</div>
         </div>
-        <Players addSelectedPlayer={this.addPlayer} clearPlayersList={this.clearPlayersList} />
+        <Players
+          addSelectedPlayer={this.addPlayer}
+          selectedPlayers={this.state.selectedPlayers}
+          clearPlayersList={this.clearPlayersList}
+        />
       </div>
     );
   }

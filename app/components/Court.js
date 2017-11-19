@@ -5,7 +5,6 @@ import Player from './Player';
 import { TEAM_LOGO } from '../constants/ImageConstants';
 
 class Court extends Component {
-
   createImage = (src) => {
     const image = new window.Image();
     image.src = src;

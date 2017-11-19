@@ -48,6 +48,7 @@ class Players extends Component {
       suggestions: [],
       players: [],
       loading: false,
+      selectedPlayers: props.selectedPlayers,
     };
 
     this.onChangeSuggestion = this.onChangeSuggestion.bind(this);
@@ -123,6 +124,7 @@ class Players extends Component {
           playerProfile={JSON.stringify(player)}
           addSelectedPlayer={this.addPlayerCopy}
           playerFiller={PLAYER_FILLER}
+          selectedPlayers={this.props.selectedPlayers}
         />
       );
     });
@@ -163,6 +165,7 @@ class Players extends Component {
 Players.propTypes = {
   addSelectedPlayer: PropTypes.func.isRequired,
   clearPlayersList: PropTypes.func.isRequired,
+  selectedPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Players;
