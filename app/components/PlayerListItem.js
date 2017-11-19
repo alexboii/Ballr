@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ReactModal from 'react-modal';
 import * as _ from 'lodash';
 import { ListItem } from 'material-ui/List';
 import PropTypes from 'prop-types';
 import ReactImageFallback from 'react-image-fallback';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 import '../assets/scss/players.scss';
+import POSITION_CONSTANTS from '../constants/PlayerConstants';
 
 class PlayerListItem extends Component {
   constructor(props) {
@@ -12,10 +14,19 @@ class PlayerListItem extends Component {
 
     this.state = {
       player: JSON.parse(this.props.playerProfile),
-      toggled: false,
+      showModal: false,
     };
 
-    console.log(this.props.selectedPlayers);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -24,30 +35,83 @@ class PlayerListItem extends Component {
     const imageUrl = `https://raw.githubusercontent.com/mroeschke/NBA-Player-Headshots/master/2015-2016/Player%20Photos/${player.full_name}.png`;
 
     return (
-      <ListItem
-        style={{
-          backgroundColor: this.props.selectedPlayers.some(x => x.full_name === player.full_name)
-            ? 'yellow'
-            : '',
-        }}
-        leftAvatar={
-          <ReactImageFallback
-            src={imageUrl}
-            fallbackImage={playerFiller}
-            initialImage={playerFiller}
-            alt="cool image should be here"
-            className={'avatar'}
-          />
-        }
-        rightIcon={<ActionInfo />}
-        primaryText={player.full_name}
-        secondaryText="Jan 9, 2014"
-        onClick={() => {
-          if (addSelectedPlayer(Object.assign(player, { image: imageUrl })) !== 0) {
-            this.setState({ toggled: true });
+      <div>
+        <ListItem
+          style={{
+            backgroundColor: this.props.selectedPlayers.some(x => x.full_name === player.full_name)
+              ? 'yellow'
+              : '',
+          }}
+          leftAvatar={
+            <ReactImageFallback
+              src={imageUrl}
+              fallbackImage={playerFiller}
+              initialImage={playerFiller}
+              alt="cool image should be here"
+              className={'avatar'}
+            />
           }
-        }}
-      />
+          rightIcon={<ActionInfo onClick={this.handleOpenModal} />}
+          primaryText={player.full_name}
+          secondaryText={POSITION_CONSTANTS[player.position]}
+          onClick={() => {
+            if (!this.showModal) {
+              if (addSelectedPlayer(Object.assign(player, { image: imageUrl })) !== 0) {
+                this.setState({ toggled: true });
+              }
+            }
+          }}
+        />
+        <ReactModal
+          isOpen={this.state.showModal}
+          className="modal"
+          contentLabel="Minimal Modal Example"
+          onRequestClose={this.handleCloseModal}
+          shouldCloseOnOverlayClick
+        >
+          <div className={'modal-div'}>
+            <div className={'modal-header'}>
+              <ReactImageFallback
+                src={imageUrl}
+                fallbackImage={playerFiller}
+                initialImage={playerFiller}
+                className={'modal-player-avatar'}
+                alt="cool image should be here"
+              />
+              <div className={'modal-player-info-header'}>
+                <h1>{player.full_name}</h1>
+                <h2>{POSITION_CONSTANTS[player.position]}</h2>
+              </div>
+            </div>
+            <div className="stats-container">
+              <div className="modal-stats-container">
+                <div className="modal-stats-name">Points per game</div>
+                <div className="modal-stats-result">{player.points_per_game.toFixed(2)}</div>
+              </div>
+              <div className="modal-stats-container">
+                <div className="modal-stats-name">Rebounds per game</div>
+                <div className="modal-stats-result">{player.rebounds_per_game.toFixed(2)}</div>
+              </div>
+              <div className="modal-stats-container">
+                <div className="modal-stats-name">Assists per game</div>
+                <div className="modal-stats-result">{player.assists_per_game.toFixed(2)}</div>
+              </div>
+              <div className="modal-stats-container">
+                <div className="modal-stats-name">Blocks per game</div>
+                <div className="modal-stats-result">{player.blocks_per_game.toFixed(2)}</div>
+              </div>
+              <div className="modal-stats-container">
+                <div className="modal-stats-name">Steals per game</div>
+                <div className="modal-stats-result">{player.steals_per_game.toFixed(2)}</div>
+              </div>
+              <div className="modal-stats-container">
+                <div className="modal-stats-name">Minutes per game</div>
+                <div className="modal-stats-result">{player.minutes.toFixed(2)}</div>
+              </div>
+            </div>
+          </div>
+        </ReactModal>
+      </div>
     );
   }
 }

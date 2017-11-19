@@ -87,3 +87,83 @@
 .react-autosuggest__suggestion--highlighted {
   background-color: #ddd;
 }
+
+.modal {
+  max-height: calc(100% - 200px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  border-radius: 8px;
+  outline: none;
+  background-color: white;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.modal-div {
+  width: 800px;
+  height: 500px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-player-avatar {
+  flex: 0.2;
+  width: 230px;
+  height: 185px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.modal-player-info-header {
+  display: flex;
+  flex: 0.8;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal-player-info-header-full-name {
+  font-size: 50px;
+}
+
+.modal-player-info-header-position {
+  font-size: 20px;
+}
+
+.modal-stats-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.modal-stats-name {
+  width: 20%;
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+.modal-stats-result {
+  width: 20%;
+  margin-left: auto;
+  margin-right: 30px;
+  text-align: right;
+}
+
+.stats-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 55%;
+}
