@@ -62,7 +62,7 @@ class Player extends Component {
       .catch(() => {
       });
   }
-  handleDragMove = (evt) => {
+  handleDrag = (evt) => {
     this.setState({
       x: evt.target.attrs.x,
       y: evt.target.attrs.y,
@@ -76,7 +76,7 @@ class Player extends Component {
       <Group
         x={this.state.x}
         y={this.state.y}
-        onDragMove={this.handleDragMove}
+        onDragEnd={this.handleDrag}
         draggable
         dragBoundFunc={this.getDragBounds}
       >
