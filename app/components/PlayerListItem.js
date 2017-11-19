@@ -54,7 +54,7 @@ class PlayerListItem extends Component {
           }
           rightIcon={<ActionInfo onClick={this.handleOpenModal} />}
           primaryText={player.full_name}
-          secondaryText={POSITION_CONSTANTS[player.position]}
+          secondaryText={`${POSITION_CONSTANTS[player.position]} | ${player.number}`}
           onClick={() => {
             setTimeout(() => {
               if (!this.state.showModal) {

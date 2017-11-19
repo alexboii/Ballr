@@ -33,7 +33,7 @@
 }
 
 .react-autosuggest__input {
-  width: 94%;
+  width: 95.5%;
   height: 30px;
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
@@ -60,7 +60,7 @@
   display: block;
   position: absolute;
   top: 51px;
-  width: 98.9%;
+  width: 99.62%;
   border: 1px solid #aaa;
   background-color: #fff;
   font-family: Helvetica, sans-serif;
@@ -175,6 +175,7 @@
 }
 
 .players-box::-webkit-scrollbar {
+  margin-top: 10px;
   width: 2px;
 }
 
