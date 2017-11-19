@@ -94,7 +94,7 @@ class Player extends Component {
       >
         <Circle
           radius={this.props.radius}
-          fill={`hsl(${Math.max(120 + ((1 - this.state.percentage) * 300), 0)}, 100%, 50%)`}
+          fill={`hsl(${Math.max(((0.4 + this.state.percentage) * 120), 0)}, 100%, 50%)`}
           shadowBlur={5}
         />
         <Circle
