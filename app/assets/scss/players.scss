@@ -112,6 +112,10 @@ body {
 .modal-div {
   width: 800px;
   height: 500px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .modal-div2 {
@@ -136,10 +140,11 @@ body {
 .modal-header {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .modal-player-avatar {
-  flex: 0.2;
+  flex: 0.3;
   width: 230px;
   height: 185px;
   margin-top: 20px;
@@ -148,7 +153,7 @@ body {
 
 .modal-player-info-header {
   display: flex;
-  flex: 0.8;
+  flex: 0.7;
   align-items: center;
   vertical-align: middle;
   justify-content: center;
@@ -174,6 +179,7 @@ body {
   width: 20%;
   margin-right: auto;
   margin-left: 20px;
+  font-weight: 700;
 }
 
 .modal-stats-result {
