@@ -34,13 +34,10 @@ class PlayerListItem extends Component {
             className={'avatar'}
           />
         }
-        rightIcon={
-          <ActionInfo
-            onClick={() => addSelectedPlayer(Object.assign(player, { image: imageUrl }))}
-          />
-        }
+        rightIcon={<ActionInfo />}
         primaryText={player.full_name}
         secondaryText="Jan 9, 2014"
+        onClick={() => addSelectedPlayer(Object.assign(player, { image: imageUrl }))}
       />
     );
   }
