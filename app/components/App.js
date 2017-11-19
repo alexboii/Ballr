@@ -11,6 +11,7 @@ class App extends Component {
 
     this.state = { selectedPlayers: [] };
     this.addPlayer = this.addPlayer.bind(this);
+    this.removePlayer = this.removePlayer.bind(this);
     this.clearPlayersList = this.clearPlayersList.bind(this);
   }
 
@@ -72,6 +73,7 @@ class App extends Component {
         </div>
         <Players
           addSelectedPlayer={this.addPlayer}
+          removeSelectedPlayer={this.removePlayer}
           selectedPlayers={this.state.selectedPlayers}
           clearPlayersList={this.clearPlayersList}
         />

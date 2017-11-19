@@ -55,11 +55,13 @@ class PlayerListItem extends Component {
           primaryText={player.full_name}
           secondaryText={POSITION_CONSTANTS[player.position]}
           onClick={() => {
-            if (!this.showModal) {
-              if (addSelectedPlayer(Object.assign(player, { image: imageUrl })) !== 0) {
-                this.setState({ toggled: true });
+            setTimeout(() => {
+              if (!this.state.showModal) {
+                if (addSelectedPlayer(Object.assign(player, { image: imageUrl })) !== 0) {
+                  this.setState({ toggled: true });
+                }
               }
-            }
+            }, 10);
           }}
         />
         <ReactModal
@@ -121,6 +123,7 @@ PlayerListItem.propTypes = {
   addSelectedPlayer: PropTypes.func.isRequired,
   playerFiller: PropTypes.string.isRequired,
   selectedPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeSelectedPlayer: PropTypes.func.isRequired,
 };
 
 export default PlayerListItem;
