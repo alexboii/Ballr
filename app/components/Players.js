@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { List } from 'material-ui/List';
 import PropTypes from 'prop-types';
+import * as _ from 'lodash';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TEAMS_CONST, TEAMS_ARRAY } from '../constants/TeamConstants';
@@ -78,7 +79,9 @@ class Players extends Component {
         })
         .then((response) => {
           this.setState({ loading: false });
-          this.setState({ players: response });
+          this.setState({
+            players: _.uniqBy(response, 'full_name'),
+          });
         })
         .catch(() => {
           this.setState({ loading: false });

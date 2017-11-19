@@ -9,4 +9,73 @@ $color: #262828;
   padding: 0;
   text-align: center;
   color: $color;
+  transition: all 1s;
+}
+
+.players-detailed {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-grow: 0.1;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.player-box {
+  flex: display;
+  flex-direction: row;
+  transition: all 800ms ease-in;
+  position: relative;
+  right: 0;
+
+  animation-name: anime;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(cubic-bezier(0.075, 0.82, 0.165, 1));
+  animation-duration: 1s;
+}
+
+.lower-image {
+  width: 100px;
+  height: 73px;
+}
+
+.lower-image:after {
+  width: 100px;
+  height: 73px;
+  opacity: 0;
+}
+
+.lower-image:hover:after {
+  content: "REM";
+  opacity: 0.6;
+  transition: all 0.5s ease-in;
+}
+
+.player-text-info {
+  display: flex;
+  vertical-align: top;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.player-text-name {
+  text-align: left;
+}
+
+.player-number {
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+@keyframes anime {
+  0% {
+    right: calc(100px - 20%);
+  }
+  100% {
+    right: 0;
+  }
 }

@@ -17,7 +17,7 @@ class PlayerListItem extends Component {
   render() {
     const { playerFiller, addSelectedPlayer } = this.props;
     const { player } = this.state;
-    const imageUrl = `https://nba-players.herokuapp.com/players/${player.last_name}/${player.first_name}`;
+    const imageUrl = `https://raw.githubusercontent.com/mroeschke/NBA-Player-Headshots/master/2015-2016/Player%20Photos/${player.full_name}.png`;
 
     return (
       <ListItem
