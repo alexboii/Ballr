@@ -88,27 +88,27 @@ class PlayerListItem extends Component {
             </div>
             <div className="stats-container">
               <div className="modal-stats-container">
-                <div className="modal-stats-name">Points per game</div>
+                <div className="modal-stats-name">PTS</div>
                 <div className="modal-stats-result">{player.points_per_game.toFixed(2)}</div>
               </div>
               <div className="modal-stats-container">
-                <div className="modal-stats-name">Rebounds per game</div>
+                <div className="modal-stats-name">REB</div>
                 <div className="modal-stats-result">{player.rebounds_per_game.toFixed(2)}</div>
               </div>
               <div className="modal-stats-container">
-                <div className="modal-stats-name">Assists per game</div>
+                <div className="modal-stats-name">AST</div>
                 <div className="modal-stats-result">{player.assists_per_game.toFixed(2)}</div>
               </div>
               <div className="modal-stats-container">
-                <div className="modal-stats-name">Blocks per game</div>
+                <div className="modal-stats-name">BLK</div>
                 <div className="modal-stats-result">{player.blocks_per_game.toFixed(2)}</div>
               </div>
               <div className="modal-stats-container">
-                <div className="modal-stats-name">Steals per game</div>
+                <div className="modal-stats-name">STL</div>
                 <div className="modal-stats-result">{player.steals_per_game.toFixed(2)}</div>
               </div>
               <div className="modal-stats-container">
-                <div className="modal-stats-name">Minutes per game</div>
+                <div className="modal-stats-name">MPG</div>
                 <div className="modal-stats-result">{player.minutes.toFixed(2)}</div>
               </div>
             </div>
@@ -124,7 +124,6 @@ PlayerListItem.propTypes = {
   addSelectedPlayer: PropTypes.func.isRequired,
   playerFiller: PropTypes.string.isRequired,
   selectedPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeSelectedPlayer: PropTypes.func.isRequired,
 };
 
 export default PlayerListItem;
