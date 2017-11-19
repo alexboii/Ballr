@@ -119,6 +119,7 @@ class Players extends Component {
     const listElements = players.map((player) => {
       return (
         <PlayerListItem
+          key={player.player_id}
           playerProfile={JSON.stringify(player)}
           addSelectedPlayer={this.addPlayerCopy}
           playerFiller={PLAYER_FILLER}

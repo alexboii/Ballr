@@ -34,7 +34,7 @@ class App extends Component {
       const imageUrl = `https://raw.githubusercontent.com/mroeschke/NBA-Player-Headshots/master/2015-2016/Player%20Photos/${player.full_name}.png`;
 
       return (
-        <div className={'player-box'}>
+        <div className={'player-box'} key={player.player_id}>
           <ReactImageFallback
             src={imageUrl}
             fallbackImage={PLAYER_FILLER}
